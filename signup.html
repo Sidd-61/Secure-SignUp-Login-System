@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+	<style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        form { max-width: 300px; margin: auto; padding: 20px; border: 1px solid #ccc; }
+        input { width: 100%; padding: 10px; margin: 5px 0; }
+        button { width: 100%; padding: 10px; background: #007bff; color: white; border: none; }
+    </style>
+    <link rel="stylesheet" href="sstyle.css">
+</head>
+
+<body>
+<p class="top-right-link">Already have an account? <a href="login.html">LOGIN</a></p>
+    <div class="form-container">
+    <div class="signup-heading">Signup</div>  <!-- Rounded Header -->
+    <form action="signup.php" method="POST">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
+</body>
+</html>

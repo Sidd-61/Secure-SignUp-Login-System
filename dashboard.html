@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="sstyle.css">  
+</head>
+<body>
+    <h1 class="dashboard-heading">Today's Date & Time</h1>  
+
+    <div class="date-time-container">
+        <p id="date"></p>  
+        <p id="time"></p>  
+    </div>
+
+    <!-- Login Success Popup -->
+    <div id="login-success" class="login-success-box">
+        Login Successful!
+    </div>
+
+    <!-- Logout Button -->
+    <a href="logout.php" class="logout-button">Logout</a>
+
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            const day = now.getDate();
+            const month = now.toLocaleString('en-US', { month: 'long' });
+            const year = now.getFullYear();
+            const timeFormatted = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+            document.getElementById("date").innerHTML = `${day}${getOrdinalSuffix(day)} ${month}, ${year}`;
+            document.getElementById("time").innerHTML = timeFormatted;
+        }
+
+        function getOrdinalSuffix(day) {
+            if (day > 3 && day < 21) return "th";
+            switch (day % 10) {
+                case 1: return "st";
+                case 2: return "nd";
+                case 3: return "rd";
+                default: return "th";
+            }
+        }
+
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+
+        // Show "Login Successful" Message for 3 Seconds
+        function showLoginSuccess() {
+            const successBox = document.getElementById("login-success");
+            successBox.style.display = "block";  
+
+            setTimeout(() => {
+                successBox.style.opacity = "0";  // Fade out
+            }, 1000);
+        }
+
+        // Trigger success message when redirected from login
+        if (window.location.search.includes("login_success")) {
+            showLoginSuccess();
+        }
+    </script>
+</body>
+</html>
